@@ -1,0 +1,31 @@
+{
+   "name": "hapi_poc",
+   "version": "0.0.1",
+   "description": "Awesome project developed with TypeORM.",
+   "devDependencies": {
+      "@types/hapi__hapi": "^19.0.2",
+      "@types/hapi__inert": "^5.2.0",
+      "@types/hapi__joi": "^16.0.12",
+      "@types/hapi__vision": "^5.5.1",
+      "@types/node": "^13.9.2",
+      "hapi-swagger": "^12.1.3",
+      "ts-node": "3.3.0",
+      "typescript": "3.3.3333"
+   },
+   "dependencies": {
+      "@hapi/boom": "^9.1.0",
+      "@hapi/hapi": "^19.1.1",
+      "@hapi/inert": "^6.0.1",
+      "@hapi/vision": "^6.0.0",
+      "nconf": "^0.10.0",
+      "nodemon": "^2.0.2",
+      "pg": "^7.18.2",
+      "reflect-metadata": "^0.1.13",
+      "ts-node": "3.3.0",
+      "typeorm": "0.2.24",
+      "typescript": "^3.8.3"
+   },
+   "scripts": {
+      "start": "ts-node src/index.ts"
+   }
+}
