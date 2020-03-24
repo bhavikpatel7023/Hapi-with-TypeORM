@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn, Timestamp} from "typeorm";
 import { BaseClass } from "../common/BaseClass";
 import { User } from "./User";
 
@@ -16,5 +16,14 @@ export class Post extends BaseClass{
         name: 'content'
     })
     content: string;
+    
+    @CreateDateColumn({
+        name: 'created_at'
+    })
+    createAt: Timestamp;
 
+    @UpdateDateColumn({
+        name: 'updated_at'
+    })
+    updatedAt: Timestamp;
 }

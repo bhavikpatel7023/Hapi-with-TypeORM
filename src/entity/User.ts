@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, Timestamp, CreateDateColumn, UpdateDateColumn, AfterLoad } from "typeorm";
 import { BaseClass } from "../common/BaseClass";
 import { Post } from "./Post";
 
@@ -25,5 +25,15 @@ export class User extends BaseClass {
 
     @OneToMany(type => Post, photo => photo.user)
     posts: Post[];
+
+    @CreateDateColumn({
+        name: 'created_at'
+    })
+    createAt: Timestamp;
+
+    @UpdateDateColumn({
+        name: 'updated_at'
+    })
+    updatedAt: Timestamp;
 
 }
