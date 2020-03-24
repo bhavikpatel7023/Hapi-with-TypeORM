@@ -5,8 +5,10 @@
    "password": "postgres",
    "database": "postgres",
    "port": 5432,
+   "cache": true,
    "synchronize": true,
-   "logging": false,
+   "logging": "all",
+   "logger": "file",
    "entities": [
       "src/entity/**/*.ts"
    ],

@@ -1,7 +1,7 @@
 import * as Hapi from '@hapi/hapi';
 import * as Joi from '@hapi/joi';
 import { Connection } from "typeorm";
-import UserController from "../controller/user";
+import PostController from '../controller/post';
 
 
 export default function (
@@ -9,31 +9,23 @@ export default function (
   database: Connection
 ) {
 
-  const userController = new UserController(database);
-  server.route({
-    method: 'GET',
-    path: '/',
-    options: {
-      handler: userController.test,
-      tags: ["api", "test"],
-      description: "Test API"
-    }
-  });
+  const postController = new PostController(database);
 
   server.route({
     method: "POST",
-    path: "/user",
+    path: "/user/{userId}/post",
     handler: (request: Hapi.Request, response: Hapi.ResponseToolkit) => {
-      return userController.createUser(request, response);
+      return postController.createPost(request, response);
     },
     options: {
-      tags: ["api", "user"],
-      description: "Insert user",
+      tags: ["api", "post"],
+      description: "Insert post",
       validate: {
+        params: Joi.object({
+          userId: Joi.number()
+        }),
         payload: Joi.object({
-          firstName: Joi.string().min(3).max(10),
-          lastName: Joi.string().min(3).max(10),
-          age: Joi.number().min(1).max(120)
+          content: Joi.string().min(3).max(10000)
         })
       }
     }
@@ -41,25 +33,42 @@ export default function (
 
   server.route({
     method: "GET",
-    path: "/user",
+    path: "/post",
     handler: (request: Hapi.Request, response: Hapi.ResponseToolkit) => {
-      return userController.getAllUser(request, response);
+      return postController.getAllPost(request, response);
     },
     options: {
       tags: ["api", "tasks"],
-      description: "Get all user"
+      description: "Get all post"
     }
   });
 
   server.route({
     method: "GET",
-    path: "/user/{id}",
+    path: "/user/{userId}/post",
     handler: (request: Hapi.Request, response: Hapi.ResponseToolkit) => {
-      return userController.getUserbyId(request, response);
+      return postController.getAllPost(request, response);
     },
     options: {
       tags: ["api", "tasks"],
-      description: "Get user by id.",
+      description: "Get all post by userId",
+      validate: {
+        params: Joi.object({
+          userId: Joi.number()
+        })
+      }
+    }
+  });
+
+  server.route({
+    method: "GET",
+    path: "/post/{id}",
+    handler: (request: Hapi.Request, response: Hapi.ResponseToolkit) => {
+      return postController.getPostbyId(request, response);
+    },
+    options: {
+      tags: ["api", "tasks"],
+      description: "Get post by id.",
       validate: {
         params: Joi.object({
           id: Joi.number()
@@ -70,21 +79,19 @@ export default function (
 
   server.route({
     method: "PUT",
-    path: "/user/{id}",
+    path: "/post/{id}",
     handler: (request: Hapi.Request, response: Hapi.ResponseToolkit) => {
-      return userController.updateUserById(request, response);
+      return postController.updatePostById(request, response);
     },
     options: {
       tags: ["api", "tasks"],
-      description: "Update user by id.",
+      description: "Update post by id.",
       validate: {
         params: Joi.object({
           id: Joi.number()
         }),
         payload: Joi.object({
-          firstName: Joi.string().min(3).max(10),
-          lastName: Joi.string().min(3).max(10),
-          age: Joi.number().min(1).max(120)
+          content: Joi.string().min(3).max(100000)
         })
       }
     }
@@ -92,13 +99,13 @@ export default function (
 
   server.route({
     method: "DELETE",
-    path: "/user/{id}",
+    path: "/post/{id}",
     handler: (request: Hapi.Request, response: Hapi.ResponseToolkit) => {
-      return userController.deleteUserById(request, response);
+      return postController.deletePostById(request, response);
     },
     options: {
       tags: ["api", "tasks"],
-      description: "Delete user by id.",
+      description: "Delete post by id.",
       validate: {
         params: Joi.object({
           id: Joi.number()

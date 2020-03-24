@@ -1,17 +1,19 @@
 // import Server from './server';
 import ServerManager from "./server";
 import * as userRoute from './route/user';
+import * as postRoute from './route/post';
 import ConnectionManager from "./database";
 import { Connection } from "typeorm";
 import "reflect-metadata";
 
 const init = async () => {
 
-  const server: ServerManager = new ServerManager()
+  const serverManager: ServerManager = new ServerManager()
   const connection: Connection = await new ConnectionManager().getConnection()
   // console.log(connection);
-  
-  userRoute.default(await server.startServer(),connection)
+  let server = await serverManager.startServer()
+  userRoute.default(server,connection)
+  postRoute.default(server,connection)
 
 }
 
