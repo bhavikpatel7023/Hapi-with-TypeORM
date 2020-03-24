@@ -14,7 +14,8 @@ export default class ConnectionManager {
             "database": "postgres",
             "port": 5432,
             "synchronize": true,
-            "logging": false,
+            "logging": "all",
+            "logger": "file",
             "entities": [
                 __dirname + '/entity/*.ts'
             ],
