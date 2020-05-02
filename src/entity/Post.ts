@@ -26,4 +26,10 @@ export class Post extends BaseClass{
         name: 'updated_at'
     })
     updatedAt: Timestamp;
+
+
+    validate(){
+        console.log("called");
+        
+    }
 }

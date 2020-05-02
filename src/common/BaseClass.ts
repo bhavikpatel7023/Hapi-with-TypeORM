@@ -1,7 +1,9 @@
-import {Entity, BaseEntity} from "typeorm";
+import {Entity, BaseEntity, BeforeInsert, BeforeUpdate} from "typeorm";
 
 export class BaseClass extends BaseEntity{
 
+    @BeforeInsert()
+    @BeforeUpdate()
     validate(){
     }
 

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, Timestamp, CreateDateColumn, UpdateDateColumn, AfterLoad } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, Timestamp, CreateDateColumn, UpdateDateColumn, AfterLoad, BeforeInsert, BeforeUpdate } from "typeorm";
 import { BaseClass } from "../common/BaseClass";
 import { Post } from "./Post";
 
@@ -36,4 +36,14 @@ export class User extends BaseClass {
     })
     updatedAt: Timestamp;
 
+
+
+    @BeforeInsert()
+    @BeforeUpdate()
+    validate(){
+        console.log("called");
+        
+    }
 }
+
+
