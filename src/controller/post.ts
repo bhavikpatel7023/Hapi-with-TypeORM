@@ -24,7 +24,10 @@ export default class PostController {
       const user: User = await this.userRepository.findOne(userId);
       const newpost = <Post>request.payload;
       newpost.user = user
-      let post: Post = await this.postRepository.save(newpost);
+
+      const entityInstance = this.userRepository.create(newpost);
+
+      let post: Post = await this.postRepository.save(entityInstance);
       return new ResponseBuilder().setData(post);
     } catch (error) {
       console.log(error.stack);

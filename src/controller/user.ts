@@ -24,7 +24,8 @@ export default class UserController {
     const newUser = <User>request.payload;
 
     try {
-      let user: User = await this.userRepository.save(newUser);
+      const entityInstance = this.userRepository.create(newUser);
+      let user: User = await this.userRepository.save(entityInstance);
       return new ResponseBuilder().setData(user);
     } catch (error) {
       console.log(error.stack);
