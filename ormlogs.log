@@ -1,0 +1,12 @@
+[2020-05-11T08:03:03.467Z][INFO]: All classes found using provided glob pattern "src/subscriber/*.ts" : "src/subscriber/ValidationSubscriber.ts"
+[2020-05-11T08:03:05.454Z][INFO]: All classes found using provided glob pattern "src/**/*.entity.ts" : "src/route/address/address.entity.ts,src/route/user/user.entity.ts"
+[2020-05-11T08:03:06.355Z][INFO]: All classes found using provided glob pattern "src/migration/*.ts" : "src/migration/1589054972974-CreateUserTable.ts,src/migration/1589055878075-CreateAddressTable.ts"
+[2020-05-11T08:03:07.213Z][QUERY]: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = current_schema() AND "table_name" = 'migrations'
+[2020-05-11T08:03:07.219Z][QUERY]: SELECT * FROM "migrations" "migrations" ORDER BY "id" DESC
+[2020-05-11T08:03:07.238Z]No migrations are pending
+[2020-05-11T08:03:37.443Z][INFO]: All classes found using provided glob pattern "src/subscriber/*.ts" : "src/subscriber/ValidationSubscriber.ts"
+[2020-05-11T08:05:16.280Z][INFO]: All classes found using provided glob pattern "src/subscriber/*.ts" : "src/subscriber/ValidationSubscriber.ts"
+[2020-05-11T08:08:42.818Z][INFO]: All classes found using provided glob pattern "src/subscriber/*.ts" : "src/subscriber/ValidationSubscriber.ts"
+[2020-05-11T08:09:17.402Z][INFO]: All classes found using provided glob pattern "src/subscriber/*.ts" : "src/subscriber/ValidationSubscriber.ts"
+[2020-05-11T08:09:17.405Z][INFO]: All classes found using provided glob pattern "src/**/*.entity.ts" : "src/route/address/address.entity.ts,src/route/user/user.entity.ts"
+[2020-05-11T08:09:38.680Z][INFO]: All classes found using provided glob pattern "src/subscriber/*.ts" : "src/subscriber/ValidationSubscriber.ts"
